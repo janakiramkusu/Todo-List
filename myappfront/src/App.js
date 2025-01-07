@@ -11,7 +11,7 @@ function App() {
   const postTask = async (task) => {
     try {
       setLoading(true); // Set loading state when making the API call
-      await axios.post("http://localhost:7001/api/todo", task);
+      await axios.post("https://todo-list-backend-g2rm.onrender.com", task);
       getTasks(); // Fetch tasks after creating a new one
     } catch (error) {
       console.error("Error creating task:", error);
@@ -23,7 +23,7 @@ function App() {
   const deleteTask = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`http://localhost:7001/api/todo/${id}`);
+      await axios.delete(`https://todo-list-backend-g2rm.onrender.com/${id}`);
       getTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -35,7 +35,7 @@ function App() {
   const updateTask = async (id, task) => {
     try {
       setLoading(true);
-      await axios.put(`http://localhost:7001/api/todo/${id}`, task);
+      await axios.put(`https://todo-list-backend-g2rm.onrender.com/${id}`, task);
       getTasks();
     } catch (error) {
       console.error("Error updating task:", error);
@@ -47,7 +47,7 @@ function App() {
   const getTasks = async () => {
     setLoading(true);
     try {
-      let response = await axios.get("http://localhost:7001/api/todo");
+      let response = await axios.get("https://todo-list-backend-g2rm.onrender.com/todo");
       settodos(response.data.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);

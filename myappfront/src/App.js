@@ -23,7 +23,7 @@ function App() {
   const deleteTask = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`https://todo-list-backend-g2rm.onrender.com/${id}`);
+      await axios.delete(`https://todo-list-backend-g2rm.onrender.com`);
       getTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -35,7 +35,7 @@ function App() {
   const updateTask = async (id, task) => {
     try {
       setLoading(true);
-      await axios.put(`https://todo-list-backend-g2rm.onrender.com/${id}`, task);
+      await axios.put(`https://todo-list-backend-g2rm.onrender.com`, task);
       getTasks();
     } catch (error) {
       console.error("Error updating task:", error);
@@ -47,7 +47,7 @@ function App() {
   const getTasks = async () => {
     setLoading(true);
     try {
-      let response = await axios.get("https://todo-list-backend-g2rm.onrender.com/todo");
+      let response = await axios.get("https://todo-list-backend-g2rm.onrender.com");
       settodos(response.data.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);

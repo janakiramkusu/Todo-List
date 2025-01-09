@@ -8,10 +8,13 @@ function App() {
   let [newDes, setNewDes] = useState("");
   let [loading, setLoading] = useState(false); // For loading feedback
 
+  // Base URL for the backend
+  const BASE_URL = "https://todo-list-backend-g2rm.onrender.com";
+
   const postTask = async (task) => {
     try {
       setLoading(true); // Set loading state when making the API call
-      await axios.post("https://todo-list-backend-g2rm.onrender.com", task);
+      await axios.post(`${BASE_URL}/api/todo`, task); // Use BASE_URL
       getTasks(); // Fetch tasks after creating a new one
     } catch (error) {
       console.error("Error creating task:", error);
@@ -23,7 +26,7 @@ function App() {
   const deleteTask = async (id) => {
     try {
       setLoading(true);
-      await axios.delete(`https://todo-list-backend-g2rm.onrender.com`);
+      await axios.delete(`${BASE_URL}/api/todo/${id}`); // Use BASE_URL
       getTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -35,7 +38,7 @@ function App() {
   const updateTask = async (id, task) => {
     try {
       setLoading(true);
-      await axios.put(`https://todo-list-backend-g2rm.onrender.com`, task);
+      await axios.put(`${BASE_URL}/api/todo/${id}`, task); // Use BASE_URL
       getTasks();
     } catch (error) {
       console.error("Error updating task:", error);
@@ -47,7 +50,7 @@ function App() {
   const getTasks = async () => {
     setLoading(true);
     try {
-      let response = await axios.get("https://todo-list-backend-g2rm.onrender.com");
+      let response = await axios.get(`${BASE_URL}/api/todo`); // Use BASE_URL
       settodos(response.data.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
